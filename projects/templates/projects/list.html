@@ -15,11 +15,11 @@
         </tr>
       </thead>
       <tbody>
+        {% for project in projects%}
         <tr>
-          {% for project in projects%}
           <td>{{ project.name }}</td>
-          {% endfor %}
         </tr>
+        {% endfor %}
       </tbody>
     </table>
     {% endif %}
