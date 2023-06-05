@@ -1,7 +1,5 @@
 from django import forms
 
-# Login form
-
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
@@ -9,8 +7,6 @@ class LoginForm(forms.Form):
         max_length=150,
         widget=forms.PasswordInput,
     )
-
-# Sign Up Form
 
 
 class SignUpForm(forms.Form):
@@ -21,5 +17,5 @@ class SignUpForm(forms.Form):
     )
     password_confirmation = forms.CharField(
         max_length=150,
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput,
     )

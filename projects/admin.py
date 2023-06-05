@@ -9,5 +9,5 @@ class ProjectsAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "owner",
-        "id"
+        "id",
     )

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from projects.models import Project
 from projects.forms import ProjectForm
 
+
 # Create your views here.
 # View to show all projects in db
 
@@ -12,7 +13,7 @@ def list_projects(request):
     projects = Project.objects.filter(owner=request.user)
 
     context = {
-        "projects": projects
+        "projects": projects,
     }
 
     return render(request, "projects/list.html", context)
@@ -24,10 +25,11 @@ def project_detail(request, id):
     project_instance = get_object_or_404(Project, id=id)
 
     context = {
-        "project": project_instance
+        "project": project_instance,
     }
 
     return render(request, "projects/project_detail.html", context)
+
 
 # View to create new project
 
@@ -44,7 +46,7 @@ def create_project(request):
         form = ProjectForm()
 
     context = {
-        "form": form
+        "form": form,
     }
 
     return render(request, "projects/create_project.html", context)
