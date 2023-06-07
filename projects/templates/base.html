@@ -66,8 +66,12 @@
 
     <!-- HEADER -->
     <div class="top_nav">
-      <div>
-        <p>search form</p>
+      <div class="search">
+        <form method="post" action="{% url 'show_search_results' %}">
+          {% csrf_token %}
+          <input type='search' placeholder='Search Projects or Tasks' name='searched'>
+          <button type="submit">Search</button>
+        </form>
       </div>
       <div>
         <img alt="user image" />

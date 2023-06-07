@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Search Results</title>
+{% endblock title%}
+
+{% block content %}
+<main>
+    {% if searched %}
+    <h1>You searched for {{searched}}<h1>
+    <div>
+        <h2>Matching Projects <h2>
+        {% for project in projects %}
+            <p>{{project.name}}</p>
+            {% empty %}
+            <p>No matching projects</p>
+        {% endfor %}
+    </div>
+    <div>
+        <h2>Matching Tasks</h2>
+        {% for task in tasks %}
+            <p>{{task.name}}</p>
+            {% empty %}
+            <p>No matching Tasks</p>
+        {% endfor %}
+        {% else %}
+            <h1>You did not search for a project or task</h1>
+    </div>
+    {% endif %}
+</main>
+{% endblock content %}
