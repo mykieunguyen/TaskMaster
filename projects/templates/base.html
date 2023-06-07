@@ -69,7 +69,11 @@
       <div class="search">
         <form method="post" action="{% url 'show_search_results' %}">
           {% csrf_token %}
-          <input type='search' placeholder='Search Projects or Tasks' name='searched'>
+          <input
+            type="search"
+            placeholder="Search Projects or Tasks"
+            name="searched"
+          />
           <button type="submit">Search</button>
         </form>
       </div>
@@ -94,9 +98,14 @@
 
     <!-- BASE CONTENT -->
     <div class="middle">
-      <div>
-        <h2>Monthly Calendar</h2>
-      </div>
+        <div id = "calendar"
+          class="auto-jsCalendar default-theme green"
+          data-navigator="false"
+          data-zero-fill="true"
+          data-month-format="month YYYY"
+          data-day-format="DD"
+          data-firstDayOfTheWeek="2"
+        ></div>
       <div>
         <p>Task Completed</p>
         <p>Task Completed</p>
@@ -113,11 +122,12 @@
     </div>
 
     <!-- PAGE CONTENT -->
-    {% block content %} {% endblock content %} {% comment %}
-    <footer>
-      <p>a footer</p>
-      <p></p>
-    </footer>
-    {% endcomment %}
+    {% block content %} {% endblock content %}
+    <!-- jsCalendar script -->
+    <script
+      src="https://unpkg.com/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
+      integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

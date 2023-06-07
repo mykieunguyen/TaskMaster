@@ -4,6 +4,8 @@ from projects.models import Project
 from tasks.models import Task
 from projects.forms import ProjectForm, Search
 from taggit.models import Tag
+from calendar import HTMLCalendar
+from datetime import date
 
 # Create your views here.
 # View to show all projects in db
@@ -73,31 +75,25 @@ def show_tagged_project(request, id):
 def base_template(request):
     projects = Project.objects.filter(owner=request.user)
 
-    if request.method == "POST":
-        form = Search(request.POST)
-        if form.is_valid():
-            search = form.cleaned_data["search_item"]
-            searched_projects = projects.filter(name=search)
-            searched_tasks = Task.objects.filter(
-                name=search, owner=request.user)
-    else:
-        form = Search()
+    TODAY = date.today()
+    year = TODAY.year
+    month = TODAY.month
 
+    cal = HTMLCalendar().formatmonth(year, month)
     context = {
         "projects": projects,
-        "form": form,
-        "searched_projects": searched_projects,
-        "searched_tasks": searched_tasks
+        "calendar": cal,
+        "year": year,
+        "month": month,
     }
 
-    return render(request, "projects/base.html", context)
+    return render(request, "base.html", context)
 
 # View for Search Results
 
 
 @login_required
 def show_search_result(request):
-
     if request.method == "POST":
         searched = request.POST['searched']
         projects = Project.objects.filter(name=searched)
