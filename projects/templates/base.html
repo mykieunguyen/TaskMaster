@@ -107,22 +107,7 @@
         data-day-format="DD"
         data-firstDayOfTheWeek="2"
       ></div>
-      {% comment %} <div>
-        <div>
-          <p>{{ days_countdown }} days till {{ urgent_task.name }} due</p>
-        </div>
-        <div>
-          <p>Projects Completed {{completed_projects|length}}</p>
-        </div>
-        <div>
-          <p>Tasks Completed {{completed_tasks|length }}</p>
-        </div>
-      </div> {% endcomment %}
-      {% block middle %}
-      {% endblock middle %}
-      <div>
-        <h2>Urgent Tasks</h2>
-      </div>
+      {% block middle %} {% endblock middle %}
     </div>
 
     <!-- TIMELINE -->

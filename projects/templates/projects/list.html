@@ -1,22 +1,29 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
 <title>Projects List</title>
-{% endblock title %}
-
-{% block middle%}
-<div>
-  <div>
-    <p>{{ days_countdown }} days till {{ urgent_task.name }} due</p>
+{% endblock title %} {% block middle%}
+<div class="middle-right">
+  <div class="countdown">
+    <div>
+      <p>Completed</p>
+      <p>{{completed_projects|length}}</p>
+      <p>Projects</p>
+    </div>
+    <div>
+      <p>{{ days_countdown }} days</p>
+      <p>till {{ urgent_task.name }} due</p>
+    </div>
+    <div>
+      <p>Completed</p>
+      <p>{{completed_tasks|length }}</p>
+      <p>Tasks</p>
+    </div>
   </div>
   <div>
-    <p>Projects Completed {{completed_projects|length}}</p>
-  </div>
-  <div>
-    <p>Tasks Completed {{completed_tasks|length }}</p>
+    <h4>Urgent Tasks</h4>
   </div>
 </div>
-{% endblock middle%}
 
-{% block content %}
+{% endblock middle%} {% block content %}
 <main>
   <div>
     <h1>My Projects</h1>
@@ -48,7 +55,8 @@
             {% for tag in project.tags.all%}
             <button>
               <a href=" {% url 'show_tagged_project' tag.id %} "
-                >{{tag.name}}</a>
+                >{{tag.name}}</a
+              >
             </button>
             {% endfor %}
           </td>
