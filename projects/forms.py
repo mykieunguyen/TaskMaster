@@ -9,4 +9,7 @@ class ProjectForm(ModelForm):
             "name",
             "description",
             "owner",
+            "deadline",
+            "status",
+            "tags",
         )

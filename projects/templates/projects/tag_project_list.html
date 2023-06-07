@@ -1,0 +1,5 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Projects List</title>
+{% endblock title %} {% block content %} {% for project in projects%}
+<p>{{project.name}}</p>
+{% endfor %} {% endblock content %}

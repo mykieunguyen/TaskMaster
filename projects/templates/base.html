@@ -1,38 +1,119 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {% block title %}
-        {% endblock title %}
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    {% if user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'show_my_tasks' %}">My tasks</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'list_projects' %}">My projects</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}">Logout</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'signup' %}">Signup</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
-        {% block content %}
-        {% endblock content %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %} {% endblock title %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body class="container">
+    <!-- SIDE BAR -->
+    <div class="side_nav">
+      <h1>Project Managing Junkie</h1>
+      <ul>
+        <li>
+          <button>
+            <a href="{% url 'home' %}">Dashboard</a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="{% url 'list_projects' %}">My projects</a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="{% url 'show_my_tasks' %}">My tasks</a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a>Task Timeline</a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a>Planning Space</a>
+          </button>
+        </li>
+      </ul>
+      <div>
+        <img alt="user_image" />
+        {% if user.is_authenticated %}
+        <ul>
+          <li>
+            <a>Settings</a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        </ul>
+        {% else %}
+        <ul>
+          <li>
+            <a href="{% url 'login' %}">Login</a>
+          </li>
+          <li>
+            <a href="{% url 'signup' %}">Signup</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="top_nav">
+      <div>
+        <p>search form</p>
+      </div>
+      <div>
+        <img alt="user image" />
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'login' %}">Login</a>
+          </li>
+          <li>
+            <a href="{% url 'signup' %}">Signup</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- BASE CONTENT -->
+    <div class="middle">
+      <div>
+        <h2>Monthly Calendar</h2>
+      </div>
+      <div>
+        <p>Task Completed</p>
+        <p>Task Completed</p>
+        <p>Task Completed</p>
+      </div>
+      <div>
+        <h2>Urgent Tasks</h2>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <h1>a Timeline View</h1>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    {% block content %} {% endblock content %} {% comment %}
+    <footer>
+      <p>a footer</p>
+      <p></p>
+    </footer>
+    {% endcomment %}
+  </body>
 </html>
