@@ -1,6 +1,22 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
 <title>Projects List</title>
-{% endblock title %} {% block content %}
+{% endblock title %}
+
+{% block middle%}
+<div>
+  <div>
+    <p>{{ days_countdown }} days till {{ urgent_task.name }} due</p>
+  </div>
+  <div>
+    <p>Projects Completed {{completed_projects|length}}</p>
+  </div>
+  <div>
+    <p>Tasks Completed {{completed_tasks|length }}</p>
+  </div>
+</div>
+{% endblock middle%}
+
+{% block content %}
 <main>
   <div>
     <h1>My Projects</h1>

@@ -16,10 +16,30 @@ import pytz
 def list_projects(request):
     projects = Project.objects.filter(owner=request.user)
     top_tags = Project.tags.most_common()[:10]
+    completed_projects = Project.objects.filter(status="Completed")
+    completed_tasks = Task.objects.filter(is_completed=True)
+    urgent_tasks = Task.objects.filter(is_completed=False).order_by('due_date')
+
+    # Calculte most urgent task
+    TODAY = datetime.now(pytz.timezone('UCT'))
+    urgent_task = "None"
+    days_countdown = 0
+    for task in urgent_tasks:
+        if TODAY < task.due_date:
+            urgent_task = task
+            days_countdown = (task.due_date - TODAY).days
+            break
+        else:
+            continue
 
     context = {
         "projects": projects,
         "top_tags": top_tags,
+        "projects": projects,
+        "completed_projects": completed_projects,
+        "completed_tasks": completed_tasks,
+        'urgent_task': urgent_task,
+        "days_countdown": days_countdown,
     }
 
     return render(request, "projects/list.html", context)
@@ -68,41 +88,6 @@ def show_tagged_project(request, id):
     }
 
     return render(request, "projects/tag_project_list.html", context)
-
-# View for Base HTML Template
-
-
-@login_required
-def base_template(request):
-    projects = Project.objects.filter(owner=request.user)
-    completed_projects = Project.objects.filter(status="Completed")
-    completed_tasks = Task.objects.filter(is_completed=True)
-    urgent_tasks = Task.objects.filter(is_completed=False).order_by('due_date')
-
-    # Calculte most urgent task
-    TODAY = datetime.now(pytz.timezone('UCT'))
-    urgent_task = "None"
-    days_countdown = 0
-    for task in urgent_tasks:
-        if TODAY < task.due_date:
-            urgent_task = task
-            days_countdown = (task.due_date - TODAY).days
-            break
-        else:
-            continue
-
-    context = {
-        "projects": projects,
-        "completed_projects": completed_projects,
-        "completed_tasks": completed_tasks,
-        'urgent_task': urgent_task,
-        "days_countdown": days_countdown,
-    }
-
-    return render(request, "base.html", context)
-
-# View for Search Results
-
 
 @login_required
 def show_search_result(request):
