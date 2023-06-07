@@ -5,7 +5,8 @@ from tasks.models import Task
 from projects.forms import ProjectForm, Search
 from taggit.models import Tag
 from calendar import HTMLCalendar
-from datetime import date
+from datetime import date, datetime
+import pytz
 
 # Create your views here.
 # View to show all projects in db
@@ -74,17 +75,28 @@ def show_tagged_project(request, id):
 @login_required
 def base_template(request):
     projects = Project.objects.filter(owner=request.user)
+    completed_projects = Project.objects.filter(status="Completed")
+    completed_tasks = Task.objects.filter(is_completed=True)
+    urgent_tasks = Task.objects.filter(is_completed=False).order_by('due_date')
 
-    TODAY = date.today()
-    year = TODAY.year
-    month = TODAY.month
+    # Calculte most urgent task
+    TODAY = datetime.now(pytz.timezone('UCT'))
+    urgent_task = "None"
+    days_countdown = 0
+    for task in urgent_tasks:
+        if TODAY < task.due_date:
+            urgent_task = task
+            days_countdown = (task.due_date - TODAY).days
+            break
+        else:
+            continue
 
-    cal = HTMLCalendar().formatmonth(year, month)
     context = {
         "projects": projects,
-        "calendar": cal,
-        "year": year,
-        "month": month,
+        "completed_projects": completed_projects,
+        "completed_tasks": completed_tasks,
+        'urgent_task': urgent_task,
+        "days_countdown": days_countdown,
     }
 
     return render(request, "base.html", context)
