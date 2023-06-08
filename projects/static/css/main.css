@@ -1,6 +1,5 @@
 .container {
   margin: 0px;
-  padding: 0px;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: auto;
@@ -20,17 +19,114 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: black;
+}
+
 /* Sidebar */
 .side_nav {
   grid-area: 1/1/12/3;
-  background-color: #e8edef;
+  /* background-color: #e8edef; */
+  background-image: linear-gradient(#e8e8e8,#e8e8e880, #f5efef50, #f2b48150, #f2b48130);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-content: center;
+  gap: 1em;
+  padding: 1em;
+  padding-bottom: 0.3em;
+  margin-right: 1em;
 }
 
-.side_nav button {
-  background-color: #dae8c7;
+.side_nav > div {
+  text-align: center;
+}
+
+.side_nav > div > h1 {
+  margin: 0em auto;
+}
+
+.side_image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.top_image {
+  width: 40%;
+  height: auto;
+}
+
+.side_bottom {
+  margin-top: -2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.side_links {
+  margin: 0em;
+  padding: 0em;
+  padding-top: 2em;
+  font-size: 0.8em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2em;
+}
+
+.user_image {
+  width: 30%;
+  height: 70%;
+}
+
+.user_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+  filter: saturate(85%);
+}
+
+.sidebar_buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1em 0em;
+}
+
+.sidebar_buttons a {
+  border: none;
+  background-color: #a1cb88;
+  padding: 0.2em 0.5em;
+  width: 50%;
+  border-radius: 24px;
+  display: flex;
+  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar_buttons a:hover img {
+  transform: translateX(110%) scale(1.1);
+}
+
+.sidebar_buttons a:hover p {
+  display: none;
+}
+
+.home_icon {
+  font-size: 1em;
+  fill: #dae8c7;
+  stroke: black;
+  width: 30%;
+  transition: 0.3s ease-in-out;
+}
+
+.sidebar_buttons p {
+  font-size: 0.8em;
+  margin: 0px;
+  align-self: center;
+  margin-left: 3px;
 }
 
 /* Header Nav */
@@ -40,6 +136,18 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.top_user_image {
+  width: 20%;
+  height: 20%;
+}
+
+.top_user_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 50%;
 }
 
 /* Middle Content */
@@ -76,7 +184,7 @@ a {
 }
 
 td.jsCalendar-current {
-  background-color: green;
+  background-color: #f9a158;
   border-radius: 10em;
 }
 
@@ -90,6 +198,7 @@ td.jsCalendar-current {
 .timeline {
   background-color: #dae8c7;
   grid-area: 5/3/7/13;
+  text-align: center;
 }
 
 /* Main Content */

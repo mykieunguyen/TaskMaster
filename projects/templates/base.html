@@ -12,54 +12,53 @@
   <body class="container">
     <!-- SIDE BAR -->
     <div class="side_nav">
-      <h1>Project Managing Junkie</h1>
-      <ul>
-        <li>
-          <button>
-            <a href="{% url 'home' %}">Dashboard</a>
-          </button>
-        </li>
-        <li>
-          <button>
-            <a href="{% url 'list_projects' %}">My projects</a>
-          </button>
-        </li>
-        <li>
-          <button>
-            <a href="{% url 'show_my_tasks' %}">My tasks</a>
-          </button>
-        </li>
-        <li>
-          <button>
-            <a>Task Timeline</a>
-          </button>
-        </li>
-        <li>
-          <button>
-            <a>Planning Space</a>
-          </button>
-        </li>
-      </ul>
       <div>
-        <img alt="user_image" />
+        <img
+          class="top_image"
+          src="{% static 'media/image/sharedgoals.svg' %}"
+        />
+        <h1>Projects Manager</h1>
+      </div>
+      <div class="sidebar_buttons">
+        <a href="{% url 'list_projects' %}">
+          <img class="home_icon" src="{% static 'media/image/home.svg' %}" />
+          <p>Home</p>
+        </a>
+        <a href="{% url 'show_my_tasks' %}">
+          <img class="home_icon" src="{% static 'media/image/task.svg' %}" />
+          <p>Tasks</p>
+        </a>
+        <a>
+          <img
+            class="home_icon"
+            src="{% static 'media/image/timeline.svg' %}"
+          />
+          <p>Timeline</p>
+        </a>
+        <a>
+          <img class="home_icon" src="{% static 'media/image/plan.svg' %}" />
+          <p>Plan</p>
+        </a>
+      </div>
+      <div>
+        <img
+          class="side_image"
+          src="{% static 'media/image/waterfall.svg' %}"
+        />
+      </div>
+      <div class="side_bottom">
         {% if user.is_authenticated %}
-        <ul>
-          <li>
-            <a>Settings</a>
-          </li>
-          <li>
-            <a href="{% url 'logout' %}">Logout</a>
-          </li>
-        </ul>
+        <div class="user_image">
+          {% block user_image%} {% endblock user_image %}
+        </div>
+        <div class='side_links'>
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
         {% else %}
-        <ul>
-          <li>
-            <a href="{% url 'login' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'signup' %}">Signup</a>
-          </li>
-        </ul>
+        <div class='side_links'>
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Signup</a>
+        </div>
         {% endif %}
       </div>
     </div>
@@ -78,7 +77,10 @@
         </form>
       </div>
       <div>
-        <img alt="user image" />
+        <div class="top_user_image">
+          {% block top_user_image %} {% endblock top_user_image%} {% comment %}
+          <img alt="user image" /> {% endcomment %}
+        </div>
         <ul>
           {% if user.is_authenticated %}
           <li>
