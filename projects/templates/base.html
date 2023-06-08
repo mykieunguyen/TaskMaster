@@ -66,35 +66,26 @@
     <!-- HEADER -->
     <div class="top_nav">
       <div class="search">
-        <form method="post" action="{% url 'show_search_results' %}">
+        <form class="search_form" method="post" action="{% url 'show_search_results' %}">
           {% csrf_token %}
           <input
             type="search"
-            placeholder="Search Projects or Tasks"
             name="searched"
+            placeholder="type to search"
           />
-          <button type="submit">Search</button>
+          <button type="submit">
+            <img class="search_icon" src="{% static 'media/image/magglass.svg' %}" />
+          </button>
         </form>
       </div>
-      <div>
-        <div class="top_user_image">
-          {% block top_user_image %} {% endblock top_user_image%} {% comment %}
-          <img alt="user image" /> {% endcomment %}
-        </div>
-        <ul>
+      <div class='top_user'>
           {% if user.is_authenticated %}
-          <li>
-            <a href="{% url 'logout' %}">Logout</a>
-          </li>
+            {% block top_user_image %} {% endblock top_user_image%}
+            {% comment %} <a href="{% url 'logout' %}">Logout</a>
           {% else %}
-          <li>
             <a href="{% url 'login' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'signup' %}">Signup</a>
-          </li>
+            <a href="{% url 'signup' %}">Signup</a> {% endcomment %}
           {% endif %}
-        </ul>
       </div>
     </div>
 
