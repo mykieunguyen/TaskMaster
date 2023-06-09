@@ -40,9 +40,6 @@
 {% endblock middle%} {% block content %}
 <main>
   <div class="main_left">
-    <div class="create_project">
-        <a href="{% url 'create_project' %}">Create</a>
-    </div>
     <div class="project_list">
       <h1>My Projects</h1>
       {% if projects|length == 0 %}
@@ -51,10 +48,11 @@
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th class="header_left">Name</th>
             <th>Status</th>
-            <th>Number of tasks</th>
+            <th>Tasks</th>
             <th>Deadline</th>
+            <th class="header_right">Tags</th>
           </tr>
         </thead>
         <tbody>
@@ -67,12 +65,12 @@
             </td>
             <td>{{project.status}}</td>
             <td>{{ project.tasks.all|length }}</td>
-            <td>{{ project.deadline }}</td>
+            <td>{{ project.deadline|date:"m/d/y" }}</td>
             <td>
-              {% for tag in project.tags.all%}
+              {% for tag in project.tags.all|slice:":2"%}
               <button>
                 <a href=" {% url 'show_tagged_project' tag.id %} "
-                  >{{tag.name}}</a
+                  >{{tag.name|truncatechars:5}}</a
                 >
               </button>
               {% endfor %}
@@ -83,14 +81,27 @@
       </table>
       {% endif %}
     </div>
+    <div class="create_project">
+      <div>
+      <a href="{% url 'create_project' %}">Create</a>
+      </div>
+      <div>
+        <a href="{% url 'create_project' %}">Completed</a>
+        </div>
+    </div>
   </div>
-  <div class="tags">
-    <p>TAGS</p>
-    {% for tag in top_tags %}
-    <button>
-      <a href=" {% url 'show_tagged_project' tag.id %} ">{{tag.name}}</a>
-    </button>
-    {% endfor %}
+  <div class="main-right">
+    <div>
+      <img src="{% static 'media/image/timemanage.svg' %}" />
+    </div>
+    <div class='tags'>
+      <p>Popular Tags</p>
+      {% for tag in top_tags %}
+      <button>
+        <a href=" {% url 'show_tagged_project' tag.id %} ">{{tag.name}}</a>
+      </button>
+      {% endfor %}
+    </div>
   </div>
 </main>
 {% endblock content %}
