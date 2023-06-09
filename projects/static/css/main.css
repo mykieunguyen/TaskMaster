@@ -177,6 +177,11 @@ a:visited {
 /* Middle Content */
 .middle {
   background-color: white;
+  background-image: url("../media/image/Gardening-cuate.svg");
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: -1.6em -1em;
+
   grid-area: 2/3/5/13;
   display: flex;
   justify-content: space-around;
@@ -266,7 +271,7 @@ td.jsCalendar-current {
 }
 #calendar {
   margin-top: 1em;
-  background-color: #e8e8e880;
+  background-color: #e8e8e820;
   border-radius: 16px 16px;
 }
 
@@ -279,7 +284,7 @@ td.jsCalendar-current {
 }
 
 #calendar td {
-  padding: 0em 0.3em;
+  padding: 0em 0.2em;
 }
 
 /* Timeline */
