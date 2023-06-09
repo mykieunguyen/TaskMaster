@@ -1,34 +1,35 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
 <title>Projects List</title>
-{% endblock title %}
-{% block user_image%}
-<img src="{{ user_avatar.avatar }}"/>
-{% endblock user_image%}
-
-{% block top_user_image %}
+{% endblock title %} {% block user_image%}
+<img src="{{ user_avatar.avatar }}" />
+{% endblock user_image%} {% block top_user_image %}
 <h4>{{user_avatar.user}}</h4>
-{% endblock top_user_image%}
-
-{% block middle%}
+{% endblock top_user_image%} {% block middle%}
 <div class="middle-right">
   <div class="countdown">
-    <div>
+    <div class="countdown2">
       <p>Completed</p>
       <p>{{completed_projects|length}}</p>
       <p>Projects</p>
     </div>
-    <div>
-      <p>{{ days_countdown }} days</p>
-      <p>till {{ urgent_task.name }} due</p>
+    <div class='middle_countdown'>
+      <div class="countdown1">
+        <img class="middle_icon" src="{% static 'media/image/time2.svg' %}" />
+        <span>
+          <h1>{{ days_countdown }}</h1>
+          <p>Days</p>
+        </span>
+        <p>till {{ urgent_task.name }} due</p>
+      </div>
     </div>
-    <div>
+    <div class="countdown3">
       <p>Completed</p>
       <p>{{completed_tasks|length }}</p>
       <p>Tasks</p>
     </div>
   </div>
   <div>
-    <h4>Urgent Tasks</h4>
+    <h4>Note</h4>
   </div>
 </div>
 
