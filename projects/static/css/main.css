@@ -166,8 +166,9 @@ a:visited {
 
 .search button {
   border: none;
-  background-color: white;
+  background-color: #ececec60;
   width: 4%;
+  margin-left: 5px;
 }
 .search_icon {
   width: 100%;
@@ -260,15 +261,26 @@ div .middle_countdown {
 }
 
 td.jsCalendar-current {
-  background-color: #f9a158;
+  background-color: #f9a15870;
   border-radius: 10em;
 }
+#calendar {
+  margin-top: 1em;
+  background-color: #e8e8e880;
+  border-radius: 16px 16px;
+}
 
-/* #calendar table {
-  height: 1em;
-  flex-shrink: 1;
-  font-size: 1em;
-} */
+.jsCalendar-title-name {
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 0.5em;
+  border-radius: 16px 16px 5px 5px;
+  background-color: #e8e8e8;
+}
+
+#calendar td {
+  padding: 0em 0.3em;
+}
 
 /* Timeline */
 .timeline {
