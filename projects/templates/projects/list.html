@@ -2,11 +2,9 @@
 <title>Projects List</title>
 {% endblock title %} {% block user_image%}
 <img src="{{ user_avatar.avatar }}" />
-{% endblock user_image%}
-{% block top_user_image %}
+{% endblock user_image%} {% block top_user_image %}
 <h4>{{user_avatar.user}}</h4>
-{% endblock top_user_image%}
-{% block middle%}
+{% endblock top_user_image%} {% block middle%}
 <div class="middle-right">
   <div class="countdown">
     <div class="out_countdown">
@@ -41,46 +39,50 @@
 
 {% endblock middle%} {% block content %}
 <main>
-  <div>
-    <h1>My Projects</h1>
-    <p>
-      <a href="{% url 'create_project' %}">Create a new project</a>
-    </p>
-    {% if projects|length == 0 %}
-    <p>You are not assigned to any projects</p>
-    {% else %}
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Status</th>
-          <th>Number of tasks</th>
-          <th>Deadline</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for project in projects %}
-        <tr>
-          <td>
-            <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
-          </td>
-          <td>{{project.status}}</td>
-          <td>{{ project.tasks.all|length }}</td>
-          <td>{{ project.deadline }}</td>
-          <td>
-            {% for tag in project.tags.all%}
-            <button>
-              <a href=" {% url 'show_tagged_project' tag.id %} "
-                >{{tag.name}}</a
+  <div class="main_left">
+    <div class="create_project">
+        <a href="{% url 'create_project' %}">Create</a>
+    </div>
+    <div class="project_list">
+      <h1>My Projects</h1>
+      {% if projects|length == 0 %}
+      <p>You are not assigned to any projects</p>
+      {% else %}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Number of tasks</th>
+            <th>Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in projects %}
+          <tr>
+            <td>
+              <a href="{% url 'show_project' project.id %}"
+                >{{ project.name }}</a
               >
-            </button>
-            {% endfor %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% endif %}
+            </td>
+            <td>{{project.status}}</td>
+            <td>{{ project.tasks.all|length }}</td>
+            <td>{{ project.deadline }}</td>
+            <td>
+              {% for tag in project.tags.all%}
+              <button>
+                <a href=" {% url 'show_tagged_project' tag.id %} "
+                  >{{tag.name}}</a
+                >
+              </button>
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
   </div>
   <div class="tags">
     <p>TAGS</p>
