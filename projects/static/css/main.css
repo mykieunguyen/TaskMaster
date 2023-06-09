@@ -29,8 +29,8 @@ a:visited {
   grid-area: 1/1/12/3;
   /* background-color: #e8edef; */
   background-image: linear-gradient(
-    #e8e8e8,
     #e8e8e880,
+    #e8e8e870,
     #f5efef50,
     #f2b48150,
     #f2b48130
@@ -44,6 +44,7 @@ a:visited {
   padding-bottom: 0.3em;
   margin-right: 1em;
   border-radius: 0em 2em 2em 0em;
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .side_nav > div {
@@ -107,7 +108,7 @@ a:visited {
 
 .sidebar_buttons a {
   border: none;
-  background-color: #a1cb88;
+  background-color: #b0d39c;
   padding: 0.2em 0.5em;
   width: 50%;
   border-radius: 24px;
@@ -127,7 +128,7 @@ a:visited {
   font-size: 1em;
   fill: #dae8c7;
   stroke: black;
-  width: 30%;
+  width: 25%;
   transition: 0.3s ease-in-out;
 }
 
@@ -160,32 +161,34 @@ a:visited {
   background-color: #ffffff;
   padding: 1.2em 2em;
   margin: 0em;
-  width: 55%;
+  width: 50%;
   height: 2em;
   border-radius: 2em;
   border: 0px;
+  box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .search button {
   border: none;
   background-color: #ececec60;
-  width: 4%;
+  width: 3%;
   margin-left: 10px;
 }
 .search_icon {
-  width: 80%;
+  width: 100%;
 }
 
 /* Middle Content */
 .middle {
-  background-color: #ffffff90;
+  background-color: #ffffff;
   background-image: url("../media/image/Gardening-cuate.svg");
   background-repeat: no-repeat;
   background-size: 45%;
-  background-position: 1em -4.5em;
+  background-position: -1em -5em;
   grid-area: 2/3/5/13;
   display: flex;
   justify-content: space-around;
+  box-shadow: 1px -4px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .middle-right {
@@ -198,17 +201,18 @@ a:visited {
 
 .countdown {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   width: 100%;
-  /* margin-left: 4em; */
   height: 80%;
 }
 
-.countdown div {
+.countdown > div {
   background-color: #dae8c7;
   border-radius: 1em;
-  /* padding: 1.5em; */
   text-align: center;
+  background-color: #ffffff;
+  padding: 0em 1em;
+  box-shadow: 0px -7px 0px 0px rgba(0, 0, 0, 0.2);
 }
 
 .countdown img {
@@ -218,26 +222,32 @@ a:visited {
   align-self: flex-start;
 }
 div .middle_countdown {
-  padding: 0em 1.5em;
-  margin-top: -2em;
-  background-color: #ffffff90;
   width: 40%;
   height: 90%;
-  box-shadow: 0px -9px 0px 0px rgba(0, 0, 0, 0.2);
+  margin-top: -2em;
 }
 
-.countdown1 {
+.out_countdown {
+  width: 35%;
+  height: 80%;
+  margin-top: -1em;
+}
+
+.countdown > div > div {
   display: flex;
   flex-direction: column;
   margin-top: 1em;
-  background: rgb(208, 114, 92);
+  justify-content: space-between;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.countdown1 {
   background: radial-gradient(
     circle,
     rgba(208, 114, 92, 1) 1%,
     rgba(218, 232, 199, 1) 90%
   );
-  justify-content: space-between;
-  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
 }
@@ -247,44 +257,29 @@ div .middle_countdown {
   padding: 0em;
   font-size: 3em;
 }
-.countdown1 span {
-  padding: 1em 2em;
+
+.countdown1 p {
+  margin: 0em;
 }
 
 .countdown2 {
-  margin-top: 1em;
-
-  background: rgb(200, 216, 219);
   background: linear-gradient(
     87deg,
     rgba(200, 216, 219, 1) 0%,
     rgba(218, 232, 199, 1) 70%
   );
-  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.2);
-  width: 25%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
 }
 
 .countdown3 {
-  margin-top: 1em;
-  background: rgb(200, 216, 219);
   background: linear-gradient(
     252deg,
     rgba(200, 216, 219, 1) 0%,
     rgba(218, 232, 199, 1) 70%
   );
-  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.2);
-  width: 25%;
-  height: 70%;
-}
-
-.countdown1 p {
-  margin: 0em;
-  padding: 0em;
-}
-
-.middle h4 {
-  margin: 0.5em;
+  width: 100%;
+  height: 100%;
 }
 
 td.jsCalendar-current {
@@ -297,6 +292,13 @@ td.jsCalendar-current {
   border-radius: 16px 16px;
   padding: 1em 0.5em;
   align-self: center;
+  width: 25%;
+  height: 80%;
+}
+
+#calendar table {
+  width: 100%;
+  height: 100%;
 }
 
 .jsCalendar-title-name {
@@ -310,6 +312,7 @@ td.jsCalendar-current {
 
 #calendar td {
   padding: 0em 0.5em;
+  text-align: center;
 }
 
 /* Timeline */
