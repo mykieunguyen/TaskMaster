@@ -290,7 +290,7 @@ td.jsCalendar-current {
 #calendar {
   /* margin-left: 1em; */
   background-color: #e8e8e890;
-  border-radius: 16px 16px;
+  border-radius: 16px;
   /* padding: 1em 0.5em; */
   align-self: center;
   width: 25%;
@@ -304,7 +304,7 @@ td.jsCalendar-current {
 
 .jsCalendar-title-name {
   text-align: center;
-  padding: 8px;
+  padding: 16px;
   font-size: 2em;
   margin-bottom: 0.5em;
   border-radius: 16px;
