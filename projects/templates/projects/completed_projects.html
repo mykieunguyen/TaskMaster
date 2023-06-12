@@ -41,7 +41,7 @@
 <main>
   <div class="main_left">
     <div class="project_list">
-      <h1>Active Projects</h1>
+      <h1>Completed Projects</h1>
       {% if projects|length == 0 %}
       <p>You are not assigned to any projects</p>
       {% else %}
@@ -86,7 +86,7 @@
         <a href="{% url 'create_project' %}">Add Project</a>
       </div>
       <div>
-        <a href="{% url 'completed_projects' %}">Completed</a>
+        <a href="{% url 'list_projects' %}">Active</a>
       </div>
     </div>
   </div>
