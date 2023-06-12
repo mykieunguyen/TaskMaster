@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-<title>Active Tasks</title>
+<title>Completed Tasks</title>
 {% endblock title %} {% block user_image%}
 <img src="{{ user_avatar.avatar }}" />
 {% endblock user_image%} {% block top_user_image %}
@@ -39,7 +39,7 @@
 {% endblock middle %} {% block content %}
 <main>
   <div class="project_list">
-    <h1>My Tasks</h1>
+    <h1>Completed Tasks</h1>
     {% if tasks|length == 0 %}
     <p>You have no tasks</p>
     {% else %}
@@ -69,10 +69,7 @@
   </div>
   <div class="create_project">
     <div>
-      <a href="{% url 'create_task' %}">Add Task</a>
-    </div>
-    <div>
-      <a href="{% url 'completed_tasks' %}">Completed</a>
+      <a href="{% url 'show_my_tasks' %}">Active Tasks</a>
     </div>
   </div>
 </main>
