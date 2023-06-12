@@ -1,5 +1,30 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
 <title>Projects List</title>
-{% endblock title %} {% block content %} {% for project in projects%}
+{% endblock title %}
+
+{% block content %}
+
+{% comment %} {% for project in projects%}
 <p>{{project.name}}</p>
-{% endfor %} {% endblock content %}
+{% endfor %} {% endcomment %}
+<main>
+<div class="tags_div">
+        {% for project in projects %}
+        <div>
+          <h3>
+            <a href="{% url 'show_project' project.id %}">{{project.name}}</a>
+          </h3>
+          <p class="project_status">{{project.status}}</p>
+          <p>{{project.description}}</p>
+          <span>
+          {% for tag in project.tags.all%}
+          <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
+            >{{tag}}</a
+          >
+          {% endfor %}
+          </span>
+        </div>
+        {% endfor %}
+</div>
+</main>
+{% endblock content %}
