@@ -93,12 +93,11 @@
     </div>
     <div class="tags">
       <p>Popular Tags</p>
+      <div>
       {% for tag in top_tags %}
-      <button>
-        <a href=" {% url 'show_tagged_project' tag.id %} ">{{tag.name}}</a>
-      </button>
+      <a class='tag_color' href=" {% url 'show_tagged_project' tag.id %} ">{{tag.name}}</a>
       {% endfor %}
-    </div>
+      </div>
   </div>
 </main>
 {% endblock content %}

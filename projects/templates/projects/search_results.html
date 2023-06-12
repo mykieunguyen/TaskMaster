@@ -1,32 +1,49 @@
-{% extends 'base.html' %}
-
-
-{% block title %}
+{% extends 'base.html' %} {% block title %}
 <title>Search Results</title>
-{% endblock title%}
-
-{% block content %}
+{% endblock title%} {% block content %}
 <main>
-    {% if searched %}
-    <h1>You searched for {{searched}}<h1>
+  {% if searched %}
+  <div class="search_div">
+    <h1>You searched for {{searched}}</h1>
     <div>
-        <h2>Matching Projects <h2>
+      <div class="project_search">
+        <h2>Matching Projects</h2>
         {% for project in projects %}
-            <p>{{project.name}}</p>
-            {% empty %}
-            <p>No matching projects</p>
+        <div>
+          <h3>
+            <a href="{% url 'show_project' project.id %}">{{project.name}}</a>
+          </h3>
+          <p class="project_status">{{project.status}}</p>
+          <p>{{project.description}}</p>
+          <span>
+          {% for tag in project.tags.all%}
+          <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
+            >{{tag}}</a
+          >
+          {% endfor %}
+          </span>
+        </div>
+        {% empty %}
+        <p>No matching projects</p>
         {% endfor %}
-    </div>
-    <div>
+      </div>
+      <div class="project_search">
         <h2>Matching Tasks</h2>
         {% for task in tasks %}
-            <p>{{task.name}}</p>
-            {% empty %}
-            <p>No matching Tasks</p>
-        {% endfor %}
-        {% else %}
-            <h1>You did not search for a project or task</h1>
+        <div>
+          <h3>
+            <a href="{% url 'show_project' task.project.id %}">{{task.name}}</a>
+          </h3>
+          <p class="project_status">{{task.project}}</p>
+          <p>Due: {{task.due_date}}</p>
+        </div>
+        {% empty %}
+        <p>No matching Tasks</p>
+        {% endfor %} {% else %}
+        <h1>You did not search for a project or task</h1>
+      </div>
     </div>
-    {% endif %}
+  </div>
+  {% endif %}
 </main>
 {% endblock content %}
