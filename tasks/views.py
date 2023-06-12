@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from tasks.models import Task
 from tasks.forms import TaskForm
+from projects.models import Project
+from datetime import date, datetime
+import pytz
+from accounts.models import UserProfile
+
 from django.contrib.auth.decorators import login_required
 
 
@@ -10,6 +15,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def create_task(request):
+    user_avatar = UserProfile.objects.get(user=request.user)
+
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -21,6 +28,8 @@ def create_task(request):
 
     context = {
         "form": form,
+        "user_avatar": user_avatar,
+
     }
 
     return render(request, "tasks/create_task.html", context)
@@ -32,9 +41,30 @@ def create_task(request):
 @login_required
 def list_tasks(request):
     tasks = Task.objects.filter(assignee=request.user)
+    completed_projects = Project.objects.filter(status="Completed")
+    completed_tasks = Task.objects.filter(is_completed=True)
+    urgent_tasks = Task.objects.filter(is_completed=False).order_by('due_date')
+    user_avatar = UserProfile.objects.get(user=request.user)
+
+# Calculte most urgent task
+    TODAY = datetime.now(pytz.timezone('UCT'))
+    urgent_task = "None"
+    days_countdown = 0
+    for task in urgent_tasks:
+        if TODAY < task.due_date:
+            urgent_task = task
+            days_countdown = (task.due_date - TODAY).days
+            break
+        else:
+            continue
 
     context = {
         "tasks": tasks,
+        "completed_projects": completed_projects,
+        "completed_tasks": completed_tasks,
+        'urgent_task': urgent_task,
+        "days_countdown": days_countdown,
+        "user_avatar": user_avatar,
     }
 
     return render(request, "tasks/list_tasks.html", context)

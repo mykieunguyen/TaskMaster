@@ -3,6 +3,14 @@
 {% block title %}
     <title>Create Task</title>
 {% endblock title %}
+
+{% block user_image%}
+<img src="{{ user_avatar.avatar }}" />
+{% endblock user_image%}
+{% block top_user_image %}
+<h4>{{user_avatar.user}}</h4>
+{% endblock top_user_image%}
+
 {% block content %}
     <main>
         <div>

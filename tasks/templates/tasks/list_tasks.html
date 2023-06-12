@@ -1,36 +1,74 @@
-{% extends 'base.html' %}
-
-{% block title %}
-    <title>My Tasks</title>
-{% endblock title %}
-{% block content %}
-    <main>
-        <div>
-            <h1>My Tasks</h1>
-            {% if tasks|length == 0 %}
-                <p>You have no tasks</p>
-            {% else %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Start Date</th>
-                            <th>Due Date</th>
-                            <th>Is completed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for task in tasks %}
-                            <tr>
-                                <td>{{ task.name }}</td>
-                                <td>{{ task.start_date }}</td>
-                                <td>{{ task.due_date }}</td>
-                                <td>{{ task.is_completed|yesno }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
-        </div>
-    </main>
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>My Tasks</title>
+{% endblock title %} {% block user_image%}
+<img src="{{ user_avatar.avatar }}" />
+{% endblock user_image%} {% block top_user_image %}
+<h4>{{user_avatar.user}}</h4>
+{% endblock top_user_image%} {% block middle%}
+<div class="middle-right">
+  <div class="countdown">
+    <div class="out_countdown">
+      <div class="countdown2">
+        <p>Completed</p>
+        <p>{{completed_projects|length}}</p>
+        <p>Projects</p>
+      </div>
+    </div>
+    <div class="middle_countdown">
+      <div class="countdown1">
+        <img class="middle_icon" src="{% static 'media/image/time2.svg' %}" />
+        <span>
+          <h1>{{ days_countdown }}</h1>
+          <p>Days</p>
+        </span>
+        <p>till {{ urgent_task.name }} due</p>
+      </div>
+    </div>
+    <div class="out_countdown">
+      <div class="countdown3">
+        <p>Completed</p>
+        <p>{{completed_tasks|length }}</p>
+        <p>Tasks</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Hello, {{user_avatar.user}}</h4>
+  </div>
+</div>
+{% endblock middle %} {% block content %}
+<main>
+  <div class="project_list">
+    <h1>My Tasks</h1>
+    {% if tasks|length == 0 %}
+    <p>You have no tasks</p>
+    {% else %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>Due Date</th>
+          <th>Is completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>{{ task.start_date|date:"m/d/y" }}</td>
+          <td>{{ task.due_date|date:"m/d/y" }}</td>
+          <td>{{ task.is_completed|yesno }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+  <div class="create_project">
+    <div>
+      <a href="{% url 'create_task' %}">Add Task</a>
+    </div>
+  </div>
+</main>
 {% endblock content %}

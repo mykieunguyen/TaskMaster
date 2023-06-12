@@ -65,6 +65,8 @@ def project_detail(request, id):
 
 @login_required
 def create_project(request):
+    user_avatar = UserProfile.objects.get(user=request.user)
+
     if request.method == "POST":
         form = ProjectForm(request.POST)
         if form.is_valid():
@@ -76,6 +78,8 @@ def create_project(request):
 
     context = {
         "form": form,
+        "user_avatar": user_avatar,
+
     }
 
     return render(request, "projects/create_project.html", context)
