@@ -405,14 +405,27 @@ main {
   margin: 1em 1em 1em 0em;
   background-color: #b8cbec99;
   border-radius: 8px;
-  padding: 1.5em;
+  padding: 1em;
 }
 .tags p {
   font-size: 1.2em;
 }
 
-.tags button {
-  margin: 2px 0px;
+.white {
+  background-color: black;
+}
+
+.tag_color {
+  display: inline-block;
+  background-color: white;
+  padding: 0.3em;
+  margin: 0.2em;
+  border-radius: 8px;
+}
+
+td .tag_color {
+  background-color: #b3c7df99;
+  padding: 0.2em;
 }
 
 /* FORMS */
