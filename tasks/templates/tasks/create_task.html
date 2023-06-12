@@ -13,13 +13,18 @@
 
 {% block content %}
     <main>
-        <div>
+        <div class='create_form'>
             <h1>Create a new task</h1>
             <form method='post'>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type='submit'>Create</button>
             </form>
+        </div>
+        <div class="create_project">
+            <div>
+              <a href="{% url 'show_my_tasks' %}">My Tasks</a>
+            </div>
         </div>
     </main>
 {% endblock content %}
