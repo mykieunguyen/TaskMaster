@@ -83,18 +83,18 @@
     </div>
     <div class="create_project">
       <div>
-      <a href="{% url 'create_project' %}">Create</a>
+        <a href="{% url 'create_project' %}">Create</a>
       </div>
       <div>
         <a href="{% url 'create_project' %}">Completed</a>
-        </div>
+      </div>
     </div>
   </div>
   <div class="main-right">
     <div>
-      <img src="{% static 'media/image/timemanage.svg' %}" />
+      <img src="{% static 'media/image/timemanage2.svg' %}" />
     </div>
-    <div class='tags'>
+    <div class="tags">
       <p>Popular Tags</p>
       {% for tag in top_tags %}
       <button>
