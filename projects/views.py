@@ -84,6 +84,8 @@ def completed_projects(request):
     return render(request, "projects/completed_projects.html", context)
 
 # View to show details of specific project
+
+
 @login_required
 def project_detail(request, id):
     project_instance = get_object_or_404(Project, id=id)
@@ -93,6 +95,31 @@ def project_detail(request, id):
     }
 
     return render(request, "projects/project_detail.html", context)
+
+
+# View to edit project
+
+
+@login_required
+def edit_project(request, id):
+    project_instance = get_object_or_404(Project, id=id)
+    user_avatar = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project_instance)
+        if form.is_valid():
+            form.save()
+            return redirect("show_project", id=id)
+
+    else:
+        form = ProjectForm(instance=project_instance)
+
+    context = {
+        "project_form": form,
+        "user_avatar": user_avatar,
+
+    }
+    return render(request, 'projects/edit_project.html', context)
 
 
 # View to create new project

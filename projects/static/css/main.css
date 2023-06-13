@@ -210,6 +210,10 @@ a:visited {
   height: 80%;
 }
 
+.countdown p {
+  margin: 0em;
+}
+
 .countdown > div {
   background-color: #dae8c7;
   border-radius: 1em;
@@ -322,6 +326,10 @@ td.jsCalendar-current {
   background-color: white;
 }
 
+.timeline h1 {
+  display: none;
+}
+
 /* Main Content */
 main {
   background-color: #ececec60;
@@ -384,7 +392,7 @@ main {
 }
 
 .project_list th {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #ddcdca;
   margin-bottom: 1em;
   background-color: #e9e2e2;
   padding: 1.5em;
@@ -399,7 +407,7 @@ main {
 }
 
 .project_list tr {
-  border-bottom: 1px solid #a6a3a340;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .main-right {
@@ -426,23 +434,25 @@ main {
   padding: 0.3em;
   margin: 0.2em;
   border-radius: 8px;
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 td .tag_color {
   background-color: #b3c7df99;
   padding: 0.2em;
+  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* Tags Page */
 .tags_div {
-    background-color: rgba(253, 251, 251, 0.861);
-    border-radius: 1em;
-    padding: 1.5em 1.5em;
-    width: 100%;
-    overflow: scroll;
-    display: flex;
-    gap: 2em;
-  }
+  background-color: rgba(253, 251, 251, 0.861);
+  border-radius: 1em;
+  padding: 1.5em 1.5em;
+  width: 100%;
+  overflow: scroll;
+  display: flex;
+  gap: 2em;
+}
 
 .tags_div div {
   background-color: #90abda;
@@ -515,4 +525,23 @@ td .tag_color {
 
 .project_status {
   margin-top: 0em;
+}
+
+/* EDIT */
+.edit-td {
+  width: 3%;
+}
+
+.edit-icon {
+  width: 100%;
+}
+
+.project-edit-icon {
+  width: 2%;
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }

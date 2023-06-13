@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit Task</title>
+{% endblock title %}
+
+{% block user_image%}
+<img src="{{ user_avatar.avatar }}" />
+{% endblock user_image%}
+
+{% block top_user_image %}
+<h4>{{user_avatar.user}}</h4>
+{% endblock top_user_image%}
+
+{% block content %}
+<main>
+    <div class='create_form'>
+        <h1>Edit</h1>
+        <form method='post'>
+            {% csrf_token %}
+            {{ task_form.as_p }}
+            <button type='submit'>Update</button>
+        </form>
+    </div>
+    <div class="create_project">
+        <div>
+          <a href="{% url 'show_my_tasks' %}">My Tasks</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}
