@@ -450,8 +450,9 @@ td .tag_color {
   padding: 1.5em 1.5em;
   width: 100%;
   overflow: scroll;
-  display: flex;
   gap: 2em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .tags_div div {
@@ -460,7 +461,6 @@ td .tag_color {
   padding: 1em;
   display: flex;
   flex-direction: column;
-  width: 25%;
 }
 
 .tags_div h3 {

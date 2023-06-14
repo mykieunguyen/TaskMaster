@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from projects.models import Project
 from tasks.models import Task
@@ -163,8 +164,10 @@ def show_tagged_project(request, id):
 def show_search_result(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        projects = Project.objects.filter(name=searched)
-        tasks = Task.objects.filter(name=searched)
+        tasks = Task.objects.filter(name__icontains=searched)
+        tags = Tag.objects.filter(name__icontains=searched)
+        filter_set = Q(name__icontains=searched) | Q(tags__in=tags)
+        projects = Project.objects.filter(filter_set).distinct()
 
         context = {
             "searched": searched,
