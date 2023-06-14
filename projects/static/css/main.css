@@ -467,6 +467,14 @@ td .tag_color {
   margin-bottom: 0em;
 }
 
+.tags_div p {
+  margin-bottom: 0.4em;
+}
+
+.project_status {
+  margin-top: 0em;
+}
+
 /* FORMS */
 .create_form {
   background-color: rgba(253, 251, 251, 0.861);
@@ -483,48 +491,6 @@ td .tag_color {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-/* SEARCH PAGE */
-.search_div {
-  background-color: rgba(253, 251, 251, 0.861);
-  border-radius: 1em;
-  padding: 1.5em 1.5em;
-  width: 100%;
-  overflow: scroll;
-}
-
-.search_div div {
-  width: 100%;
-  display: flex;
-}
-
-.project_search {
-  /* width: 50%; */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: flex-start; */
-}
-
-.project_search h2 {
-  margin: 1em 0em;
-}
-
-.project_search div {
-  background-color: #90abda;
-  border-radius: 1em;
-  padding: 1em;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.project_search h3 {
-  margin-bottom: 0em;
-}
-
-.project_status {
-  margin-top: 0em;
 }
 
 /* EDIT */

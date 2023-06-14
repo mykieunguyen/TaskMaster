@@ -3,44 +3,42 @@
 {% endblock title%} {% block content %}
 <main>
   {% if searched %}
-  <div class="search_div">
+  <div >
     <h1>You searched for {{searched}}</h1>
-    <div>
-      <div class="project_search">
-        <h2>Matching Projects</h2>
-        {% for project in projects %}
-        <div>
-          <h3>
-            <a href="{% url 'show_project' project.id %}">{{project.name}}</a>
-          </h3>
-          <p class="project_status">{{project.status}}</p>
-          <p>{{project.description}}</p>
-          <span>
-          {% for tag in project.tags.all%}
-          <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
-            >{{tag}}</a
-          >
-          {% endfor %}
-        </div>
-        {% empty %}
-        <p>No matching projects</p>
+    <div class='tags_div'>
+      {% for project in projects %}
+      <div >
+        <h3>
+          <a href="{% url 'show_project' project.id %}">{{project.name}}</a>
+        </h3>
+        <p class="project_status">{{project.status}}</p>
+        <p>{{project.description}}</p>
+        <span>
+        {% for tag in project.tags.all%}
+        <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
+          >{{tag}}</a
+        >
         {% endfor %}
+        </span>
       </div>
-      <div class="project_search">
-        <h2>Matching Tasks</h2>
-        {% for task in tasks %}
-        <div>
-          <h3>
-            <a href="{% url 'show_project' task.project.id %}">{{task.name}}</a>
-          </h3>
-          <p class="project_status">{{task.project}}</p>
-          <p>Due: {{task.due_date}}</p>
-        </div>
+      {% empty %}
+      <p>No matching projects</p>
+      {% endfor %}
+
+
+      {% for task in tasks %}
+      <div>
+        <h3>
+          <a href="{% url 'show_project' task.project.id %}">{{task.name}}</a>
+        </h3>
+        <p class="project_status">{{task.project}}</p>
+        <p>Due: {{task.due_date}}</p>
+      </div>
         {% empty %}
         <p>No matching Tasks</p>
-        {% endfor %} {% else %}
+      {% endfor %}
+      {% else %}
         <h1>You did not search for a project or task</h1>
-      </div>
     </div>
   </div>
   {% endif %}
