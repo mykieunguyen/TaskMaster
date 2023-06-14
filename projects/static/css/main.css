@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@300;400&family=Urbanist:wght@200;400&display=swap");
 .container {
   margin: 0px;
   display: grid;
@@ -10,6 +11,7 @@
     rgba(179, 236, 243, 0.5) 15%,
     rgba(203, 203, 239, 0.9) 68%
   );
+  font-family: "Urbanist", sans-serif;
 }
 
 /* APPLY to ALL */
@@ -134,6 +136,7 @@ a:visited {
   stroke: black;
   width: 25%;
   transition: 0.3s ease-in-out;
+  padding: 0.3em;
 }
 
 .sidebar_buttons p {
@@ -142,6 +145,7 @@ a:visited {
   align-self: center;
   margin-left: 6px;
   color: black;
+  font-weight: 800;
 }
 
 /* Header Nav */
@@ -199,7 +203,7 @@ a:visited {
 .middle-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 45%;
 }
 
@@ -226,7 +230,7 @@ a:visited {
 .countdown img {
   padding: 0em;
   margin: 0em;
-  width: 45%;
+  width: 40%;
   align-self: flex-start;
 }
 div .middle_countdown {
@@ -273,6 +277,12 @@ div .middle_countdown {
   margin: 0em;
 }
 
+.countdown2 p:nth-child(2),
+.countdown3 p:nth-child(2) {
+  font-size: 2em;
+  font-weight: 800;
+}
+
 .countdown2 {
   background: #b3c7df99;
   width: 100%;
@@ -312,6 +322,11 @@ td.jsCalendar-current {
   margin-bottom: 0.5em;
   border-radius: 16px;
   background-color: #e9e2e2;
+}
+
+.jsCalendar-week-days {
+  font-weight: 800;
+  font-size: 1.2em;
 }
 
 #calendar td {
@@ -367,7 +382,7 @@ main {
   border-radius: 1em;
   padding: 1.5em 1.5em;
   width: 95%;
-  height: 100%;
+  height: 90%;
   overflow: scroll;
 }
 
@@ -435,12 +450,14 @@ main {
   margin: 0.2em;
   border-radius: 8px;
   box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  font-size: .9em;
 }
 
 td .tag_color {
   background-color: #b3c7df99;
   padding: 0.2em;
   box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
 }
 
 /* Tags Page */

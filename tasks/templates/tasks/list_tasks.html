@@ -52,6 +52,7 @@
           <th>Start Date</th>
           <th>Due Date</th>
           <th>Is completed</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -67,6 +68,11 @@
           <td>{{ task.start_date|date:"m/d/y" }}</td>
           <td>{{ task.due_date|date:"m/d/y" }}</td>
           <td>{{ task.is_completed|yesno }}</td>
+          <td class='edit-td'>
+            <a href="{% url 'delete_task' task.id %}">
+              <img class="edit-icon" src="{% static 'media/image/trash2.svg' %}" />
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

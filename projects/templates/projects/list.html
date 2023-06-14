@@ -33,7 +33,7 @@
     </div>
   </div>
   <div>
-    <h4>Hello, {{user_avatar.user}}</h4>
+    <h4>Hello, {{user_avatar.user}}. Explore your user dashboard.</h4>
   </div>
 </div>
 
@@ -52,7 +52,8 @@
             <th>Status</th>
             <th>Tasks</th>
             <th>Deadline</th>
-            <th class="header_right">Tags</th>
+            <th class="header_right"></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -72,6 +73,11 @@
                   >{{tag.name|truncatechars:5}}</a
                 >
               {% endfor %}
+            </td>
+            <td class='edit-td'>
+              <a href="{% url 'delete_project' project.id %}">
+                <img class="edit-icon" src="{% static 'media/image/trash2.svg' %}" />
+              </a>
             </td>
           </tr>
           {% endfor %}

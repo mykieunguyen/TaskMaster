@@ -127,3 +127,11 @@ def edit_task(request, id):
     }
 
     return render(request, "tasks/edit_task.html", context)
+
+
+# Delete Task
+@login_required
+def delete_task(request, id):
+    task_instance = Task.objects.get(id=id)
+    task_instance.delete()
+    return redirect("show_my_tasks")

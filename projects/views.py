@@ -178,3 +178,11 @@ def show_search_result(request):
 
     else:
         return render(request, "projects/search_results.html")
+
+
+# Delete Project View
+@login_required
+def delete_project(request, id):
+    project_instance = Project.objects.get(id=id)
+    project_instance.delete()
+    return redirect("list_projects")
