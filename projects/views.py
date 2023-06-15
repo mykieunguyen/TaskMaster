@@ -90,9 +90,29 @@ def completed_projects(request):
 @login_required
 def project_detail(request, id):
     project_instance = get_object_or_404(Project, id=id)
+    completed_projects = Project.objects.filter(status="Completed")
+    completed_tasks = Task.objects.filter(is_completed=True)
+    urgent_tasks = Task.objects.filter(is_completed=False).order_by('due_date')
+    user_avatar = UserProfile.objects.get(user=request.user)
+
+    TODAY = datetime.now(pytz.timezone('UCT'))
+    urgent_task = "None"
+    days_countdown = 0
+    for task in urgent_tasks:
+        if TODAY < task.due_date:
+            urgent_task = task
+            days_countdown = (task.due_date - TODAY).days
+            break
+        else:
+            continue
 
     context = {
         "project": project_instance,
+        "completed_projects": completed_projects,
+        "completed_tasks": completed_tasks,
+        'urgent_task': urgent_task,
+        "days_countdown": days_countdown,
+        "user_avatar": user_avatar,
     }
 
     return render(request, "projects/project_detail.html", context)

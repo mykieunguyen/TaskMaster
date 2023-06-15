@@ -5,6 +5,48 @@
     <title>{{ project.name }}</title>
 {% endblock title %}
 
+{% block user_image%}
+<img src="{{ user_avatar.avatar }}" />
+<div>
+<p>{{user_avatar.user}}</p>
+<a class='side_links'>settings</a>
+</div>
+{% endblock user_image%} {% block top_user_image %}
+<h4>{{user_avatar.user}}</h4>
+{% endblock top_user_image%} {% block middle%}
+<div class="middle-right">
+  <div class="countdown">
+    <div class="out_countdown">
+      <div class="countdown2">
+        <p>Completed</p>
+        <p>{{completed_projects|length}}</p>
+        <p>Projects</p>
+      </div>
+    </div>
+    <div class="middle_countdown">
+      <div class="countdown1">
+        <img class="middle_icon" src="{% static 'media/image/time2.svg' %}" />
+        <span>
+          <h1>{{ days_countdown }}</h1>
+          <p>Days</p>
+        </span>
+        <p>{{ urgent_task.name }} due</p>
+      </div>
+    </div>
+    <div class="out_countdown">
+      <div class="countdown3">
+        <p>Completed</p>
+        <p>{{completed_tasks|length }}</p>
+        <p>Tasks</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Hello, {{user_avatar.user}}. Explore your user dashboard.</h4>
+  </div>
+</div>
+{% endblock middle %}
+
 {% block content %}
     <main>
         <div class="project_list">

@@ -2,6 +2,10 @@
 <title>Projects List</title>
 {% endblock title %} {% block user_image%}
 <img src="{{ user_avatar.avatar }}" />
+<div>
+<p>{{user_avatar.user}}</p>
+<a class='side_links'>settings</a>
+</div>
 {% endblock user_image%} {% block top_user_image %}
 <h4>{{user_avatar.user}}</h4>
 {% endblock top_user_image%} {% block middle%}
@@ -21,7 +25,7 @@
           <h1>{{ days_countdown }}</h1>
           <p>Days</p>
         </span>
-        <p>till {{ urgent_task.name }} due</p>
+        <p>{{ urgent_task.name }} due</p>
       </div>
     </div>
     <div class="out_countdown">
@@ -69,14 +73,19 @@
             <td>{{ project.deadline|date:"m/d/y" }}</td>
             <td>
               {% for tag in project.tags.all|slice:":2"%}
-                <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
-                  >{{tag.name|truncatechars:5}}</a
-                >
+              <a
+                class="tag_color"
+                href=" {% url 'show_tagged_project' tag.id %} "
+                >{{tag.name|truncatechars:5}}</a
+              >
               {% endfor %}
             </td>
-            <td class='edit-td'>
+            <td class="edit-td">
               <a href="{% url 'delete_project' project.id %}">
-                <img class="edit-icon" src="{% static 'media/image/trash2.svg' %}" />
+                <img
+                  class="edit-icon"
+                  src="{% static 'media/image/trash2.svg' %}"
+                />
               </a>
             </td>
           </tr>
@@ -101,9 +110,11 @@
     <div class="tags">
       <p>Popular Tags</p>
       <div>
-      {% for tag in top_tags %}
-      <a class='tag_color' href=" {% url 'show_tagged_project' tag.id %} ">{{tag.name}}</a>
-      {% endfor %}
+        {% for tag in top_tags %}
+        <a class="tag_color" href=" {% url 'show_tagged_project' tag.id %} "
+          >{{tag.name}}</a
+        >
+        {% endfor %}
       </div>
     </div>
   </div>

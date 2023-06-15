@@ -2,6 +2,10 @@
 <title>Completed Tasks</title>
 {% endblock title %} {% block user_image%}
 <img src="{{ user_avatar.avatar }}" />
+<div>
+  <p>{{user_avatar.user}}</p>
+  <a class='side_links'>settings</a>
+  </div>
 {% endblock user_image%} {% block top_user_image %}
 <h4>{{user_avatar.user}}</h4>
 {% endblock top_user_image%} {% block middle%}
@@ -21,7 +25,7 @@
           <h1>{{ days_countdown }}</h1>
           <p>Days</p>
         </span>
-        <p>till {{ urgent_task.name }} due</p>
+        <p> {{ urgent_task.name }} due</p>
       </div>
     </div>
     <div class="out_countdown">
@@ -33,7 +37,7 @@
     </div>
   </div>
   <div>
-    <h4>Hello, {{user_avatar.user}}</h4>
+    <h4>Hello, {{user_avatar.user}}. Explore your user dashboard.</h4>
   </div>
 </div>
 {% endblock middle %} {% block content %}
