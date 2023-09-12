@@ -60,7 +60,7 @@ def completed_projects(request):
     user_avatar = UserProfile.objects.get(user=request.user)
 
     # Calculte most urgent task
-    TODAY = datetime.now(pytz.timezone('UCT'))
+    TODAY = datetime.now(pytz.timezone('UTC'))
     urgent_task = "None"
     days_countdown = 0
     for task in urgent_tasks:

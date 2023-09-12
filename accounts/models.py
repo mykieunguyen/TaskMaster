@@ -8,7 +8,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        primary_key=False,
+        primary_key=True,
     )
     avatar = models.URLField(
         max_length=200,
